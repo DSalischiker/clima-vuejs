@@ -21,6 +21,10 @@ width: 100%;
 height: 100vh;
 margin: 0;
 padding: 0;
+::selection{
+  background-color:white;
+  color: #252525;
+  }
 }
 #app {
   font-family: $fontFamily;

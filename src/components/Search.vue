@@ -39,11 +39,13 @@ export default {
           console.log(response.data);
           //timeOut para simular loading
 
-          setTimeout(() => {  this.$emit("showData", response.data); }, 1500);
+          setTimeout(() => {
+            this.$emit("showData", response.data);
+          }, 1500);
         })
         .catch((error) => console.error(error))
         .then(() => console.log("hice el get"));
-      /* this.cityInput = ''; */
+      this.cityInput = "";
     },
     keymonitor: function (event) {
       console.log(event.key);
@@ -56,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search-container{
+.search-container {
   width: 80%;
   height: 10%;
   display: flex;
@@ -66,7 +68,7 @@ export default {
   margin: 0 auto;
   gap: $flexGap;
 
-  input[type=text]{
+  input[type="text"] {
     position: relative;
     padding: 15px 20px 15px 20px;
     width: 70%;
@@ -79,11 +81,16 @@ export default {
     letter-spacing: $textSpacing;
     border: none;
     border-radius: $roundedBorder;
-    background: linear-gradient(to right, #FFFFFF 0%,#464747 #F9F9F9 100%);
+    background: linear-gradient(to right, #ffffff 0%, #464747 #f9f9f9 100%);
     transition: $transition;
     outline: none;
 
-    &:hover{
+    &::selection {
+      background-color: purple;
+      color: white;
+    }
+
+    &:hover {
       font-size: 12px;
       transition: $transition;
     }
@@ -93,7 +100,7 @@ export default {
     } */
   }
 
-  button{
+  button {
     padding: 10px;
     border: none;
     border-radius: $roundedBorder;
@@ -104,22 +111,20 @@ export default {
     font-weight: $thinWeight;
     cursor: pointer;
     transition: $transition;
-    &:hover{
+    &:hover {
       background-color: rgba($color: #dfdfdf, $alpha: 0.6);
       transition: $transition;
     }
-
   }
 
-  i{
+  i {
     font-size: 20px;
     position: relative;
     color: white;
-    &:active{
+    &:active {
       font-size: 18px;
       transition: font-size 0.05s ease-in-out;
     }
   }
 }
-
 </style>
