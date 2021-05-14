@@ -1,7 +1,8 @@
 <template>
   <div class="weather-container" :class="[itsDayTime ? 'day' : 'night', isHot ? 'hot' : 'cold']">
     <div class="components-container">
-      <p class="date">{{ currentDate }}</p>
+      <span class="date">{{ currentDate }}</span>
+      <!-- <span class="date">{{getHour()}}</span> -->
       <Search class="search" @showData="showData" @loadingData="loadingData"  />
       <Data
         class="data"
@@ -34,7 +35,7 @@ export default {
       return moment().format("dddd Do MMMM");
     },
     itsDayTime() {
-      return this.getHour() < "14:00";
+      return this.getHour() < "19:00";
     },
   },
   methods: {
@@ -63,60 +64,62 @@ export default {
   max-width: 600px;
   height: auto;
   padding: 2em;
-  border-radius: 8px;
+  border-radius: $roundedBorder;
   margin: auto;
+
+  /* Backgrounds */
   &.day {
-    background: #56ccf2; /* fallback for old browsers */
+    background: $dayColorOne; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to top,
-      #2f80ed,
-      #56ccf2
+      $dayColorTwo,
+      $dayColorOne
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
       to top,
-      #2f80ed,
-      #56ccf2
+      $dayColorTwo,
+      $dayColorOne
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   &.night {
-    background: #0f2027; /* fallback for old browsers */
+    background: $nightColorOne; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to top,
-      #2c5364,
-      #203a43,
-      #0f2027
+      $nightColorTwo,
+      $nightColorThree,
+      $nightColorOne
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
       to top,
-      #2c5364,
-      #203a43,
-      #0f2027
+      $nightColorTwo,
+      $nightColorThree,
+      $nightColorOne
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   &.hot {
-    background: #ff512f; /* fallback for old browsers */
+    background: $hotColorOne; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to top,
-      #f09819,
-      #ff512f
+      $hotColorTwo,
+      $hotColorOne
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
       to top,
-      #f09819,
-      #ff512f
+      $hotColorTwo,
+      $hotColorOne
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
   &.cold {
-    background: #24c6dc; /* fallback for old browsers */
+    background: $coldColorOne; /* fallback for old browsers */
     background: -webkit-linear-gradient(
       to top,
-      #514a9d,
-      #24c6dc
+      $coldColorTwo,
+      $coldColorOne
     ); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(
       to top,
-      #514a9d,
-      #24c6dc
+      $coldColorTwo,
+      $coldColorOne
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 
@@ -130,13 +133,17 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin: auto;
+
   .date {
-    margin-bottom: 2em;
-    font-size: 12px;
-    letter-spacing: 3px;
-    font-weight: 400;
-    text-transform: uppercase;
+    font-size: $pSize;
+    letter-spacing: $textSpacing;
+    font-weight: $regularWeight;
+    text-transform: $textTransform;
     height: 10%;
+
+    &:last-of-type{
+      margin-bottom: $marginBottom;
+    }
   }
 }
 </style>

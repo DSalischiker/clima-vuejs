@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Loading animation -->
     <div v-if="loadingData">
       <div class="lds-ellipsis">
         <div></div>
@@ -49,7 +50,7 @@
       </div>
     </div>
 
-    <div class="no-data" v-else v-show="!cityName && !loadingData">Esperando ciudad...</div>
+    <p class="no-data" v-else v-show="!cityName && !loadingData">Esperando ciudad...</p>
   </div>
 </template>
 
@@ -117,8 +118,8 @@ export default {
   }
 
   .weather-data-container {
-    display: flex;
     width: 100%;
+    display: flex;
     margin: 0 auto;
   }
 
@@ -133,13 +134,16 @@ export default {
   .main-temperature {
     margin: 0.5em auto 0.2em auto;
     padding: 0;
+    font-size: 36px;
+    font-family: $fontFamily;
+    font-weight: $boldWeight;
   }
 
   .weather-description {
-    font-size: 10px;
-    letter-spacing: 3px;
-    font-weight: 400;
-    text-transform: uppercase;
+    font-size: $weatherDetailSize;
+    letter-spacing: $textSpacing;
+    font-weight: $regularWeight;
+    text-transform: $textTransform;
     margin: 0.2em auto 0 auto;
     padding: 0;
   }
@@ -147,7 +151,7 @@ export default {
   .weather-detail-container {
     display: flex;
     justify-content: center;
-    gap: 1em;
+    gap: $flexGap;
     align-items: center;
   }
 
@@ -159,17 +163,28 @@ export default {
   }
 
   .weather-detail {
-    font-size: 12px;
+    font-size: $weatherDetailSize+2px;
   }
 
   .city-name {
-    font-size: 36px;
+    font-size: $cityName;
     margin: 0.5em auto 0 auto;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: 200;
+    text-transform: $textTransform;
+    letter-spacing: 6px;
+    font-weight: $boldWeight;
   }
 }
+
+.no-data {
+  margin-top: 2em;
+  font-family: $fontFamily;
+  text-transform: $textTransform;
+  letter-spacing: $textSpacing;
+  font-size: $pSize;
+  font-weight: $regularWeight;
+}
+
+/* Loading animation */
 .lds-ellipsis {
   display: inline-block;
   position: relative;
@@ -225,7 +240,5 @@ export default {
     transform: translate(24px, 0);
   }
 }
-.no-data {
-  margin-top: 1em;
-}
+
 </style>
