@@ -182,8 +182,13 @@ export default {
   letter-spacing: $textSpacing;
   font-size: $pSize;
   font-weight: $regularWeight;
+  animation: blink 2s infinite;
 }
-
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
 /* Loading animation */
 .lds-ellipsis {
   display: inline-block;
