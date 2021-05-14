@@ -1,5 +1,4 @@
 <template>
-    <div><p>Data</p></div>
   <div>
     <div v-if="loadingData">
       <div class="lds-ellipsis">
@@ -58,8 +57,6 @@
 import "remixicon/fonts/remixicon.css";
 
 export default {
-    name: "Data",
-}
   name: "Data",
   props: ["weatherData", "loadingData"],
   data() {
@@ -108,5 +105,127 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.data-container {
+  height: 80%;
+  transition: height 1s ease-in-out;
 
+  .data-container-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em auto;
+  }
+
+  .weather-data-container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .weather-data-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-temperature {
+    margin: 0.5em auto 0.2em auto;
+    padding: 0;
+  }
+
+  .weather-description {
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0.2em auto 0 auto;
+    padding: 0;
+  }
+
+  .weather-detail-container {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    align-items: center;
+  }
+
+  .weather-detail-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .weather-detail {
+    font-size: 12px;
+  }
+
+  .city-name {
+    font-size: 36px;
+    margin: 0.5em auto 0 auto;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 200;
+  }
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+.no-data {
+  margin-top: 1em;
+}
 </style>
