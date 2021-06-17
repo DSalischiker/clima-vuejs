@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <p class="no-data" v-else v-show="!cityName && !loadingData">Esperando ciudad...</p>
+    <p class="no-data" v-else v-show="!cityName && !loadingData">Esperando ciudad..</p>
   </div>
 </template>
 
